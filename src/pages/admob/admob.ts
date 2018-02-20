@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the AdmobPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,53 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AdmobPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private adMobFree: AdMobFree
+  ) {
+    this.showBannerAd();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AdmobPage');
   }
+
+  async showBannerAd() {
+    try {
+      const bannerConfig: AdMobFreeBannerConfig = {
+        //id: 'your-banner-id-here',
+        isTesting: true,
+        autoShow: true
+      }
+
+      this.adMobFree.banner.config(bannerConfig);
+
+      const result = await this.adMobFree.banner.prepare();
+      console.log(result);
+    }
+    catch (e) {
+      console.error(e);
+    }
+  }
+
+  async showInterstitialAd() {
+    try {
+      const interstitialConfig: AdMobFreeInterstitialConfig = {
+        //id: '',
+        isTesting: true,
+        autoShow: true
+      }
+
+      this.adMobFree.interstitial.config(interstitialConfig);
+
+      const result = await this.adMobFree.interstitial.prepare();
+      console.log(result);
+    }
+    catch (e) {
+      console.error(e)
+    }
+  }
+
 
 }

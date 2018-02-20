@@ -12,6 +12,8 @@ import { AdmobProvider } from '../providers/admob/admob';
 import { AdmobPageModule } from '../pages/admob/admob.module';
 import { ApiQuotesProvider } from '../providers/api-quotes/api-quotes';
 import { AudioStreamProvider } from '../providers/audio-stream/audio-stream';
+import { AdMobFree } from '@ionic-native/admob-free';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { AudioStreamProvider } from '../providers/audio-stream/audio-stream';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AdmobProvider,
     ApiQuotesProvider,
-    AudioStreamProvider
+    AudioStreamProvider,
+    AdMobFree
   ]
 })
 export class AppModule {}
