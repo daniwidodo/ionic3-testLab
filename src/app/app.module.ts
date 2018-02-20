@@ -11,6 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AdmobProvider } from '../providers/admob/admob';
 import { AdmobPageModule } from '../pages/admob/admob.module';
 import { ApiQuotesProvider } from '../providers/api-quotes/api-quotes';
+import { AudioStreamProvider } from '../providers/audio-stream/audio-stream';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ApiQuotesProvider } from '../providers/api-quotes/api-quotes';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AdmobProvider,
-    ApiQuotesProvider
+    ApiQuotesProvider,
+    AudioStreamProvider
   ]
 })
 export class AppModule {}
